@@ -5,7 +5,7 @@ defined ('_JEXEC') or die('Restricted access');
 /**
  * Shipment plugin for general, rules-based shipments, like regular postal services with complex shipping cost structures
  *
- * @version $Id$
+ * @version 1.0
  * @package VirtueMart
  * @subpackage Plugins - shipment
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
