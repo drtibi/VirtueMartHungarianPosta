@@ -8,8 +8,6 @@ defined ('_JEXEC') or die('Restricted access');
  * @version $Id$
  * @package VirtueMart
  * @subpackage Plugins - shipment
- * @copyright Copyright (C) 2004-2012 VirtueMart Team - All rights reserved.
- * @copyright Copyright (C) 2013 Reinhold Kainhofer, reinhold@kainhofer.com
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
  * VirtueMart is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -18,7 +16,8 @@ defined ('_JEXEC') or die('Restricted access');
  * See /administrator/components/com_virtuemart/COPYRIGHT.php for copyright notices and details.
  *
  * http://virtuemart.org
- * @author Reinhold Kainhofer, based on the weight_countries shipping plugin by Drajkó Tibor
+ * @author Tibor Drajkó, based on the weight_countries shipping plugin
+ * mail: drajko.tibor@gmail.com
  *
 */
 if (!class_exists ('vmPSPlugin')) {
