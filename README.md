@@ -16,5 +16,4 @@ for a special project. I hope this save your time.
 The language files not synchronized to English, only the Hungarian is the valid files.
 
 If you make a better version share me to publish for the next user.
-
-Thanks
+mail: drajko.tibor@gmail.com
