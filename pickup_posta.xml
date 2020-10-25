@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension version="3.0" type="plugin" group="vmshipment" method="upgrade">
+  <name>VM - Posta pickup</name>
+  <creationDate>2020-01-20</creationDate>
+  <author>Drajkó Tibor</author>
+  <authorUrl></authorUrl>
+  <copyright></copyright>
+  <license></license>
+  <version>1.1</version>
+  <description>Posta pickup plugin</description>
+  <files>
+    <filename plugin="pickup_posta">pickup_posta.php</filename>
+    <folder>language</folder>
+    <folder>logos</folder>
+  </files>
+  <languages folder="language">
+    <language tag="en-GB">en-GB/en-GB.plg_vmshipment_pickup_posta.ini</language>
+    <language tag="en-GB">en-GB/en-GB.plg_vmshipment_pickup_posta.sys.ini</language>
+    <language tag="hu-HU">hu-HU/hu-HU.plg_vmshipment_pickup_posta.ini</language>
+    <language tag="hu-HU">hu-HU/hu-HU.plg_vmshipment_pickup_posta.sys.ini</language>
+  </languages>
+  <scriptfile>pickup_posta.script.php</scriptfile>
+  <config>
+    <fields name="params">
+      <fieldset name="basic">
+        <field name="pickup_posta_api" type="text"
+          default="https://www.posta.hu/szolgaltatasok/posta-srv-postoffice/rest/postoffice/listPPMarkers"
+          label="VMSHIPMENT_PICKUP_POSTA_API" size="200"
+          description="VMSHIPMENT_PICKUP_POSTA_API_DESC" />
+        <field name="pickup_posta_update_hour" type="number"
+          label="VMSHIPMENT_PICKUP_POSTA_UPDATE_HOUR" size="200"
+          default="1" min="0" step="1"
+          description="VMSHIPMENT_PICKUP_POSTA_UPDATE_HOUR_DESC" />
+        <field name="pickup_posta_last_error" type="text"
+          readonly="true"
+          label="VMSHIPMENT_PICKUP_POSTA_LAST_ERROR" size="200"
+          description="VMSHIPMENT_PICKUP_POSTA_LAST_ERROR_DESC" />
+      </fieldset>
+    </fields>  
+  </config>
+  <vmconfig>
+    <fields name="params">
+      <fieldset name="basic">
+        <field name="shipment_logos" type="vmfiles"
+          label="VMSHIPMENT_POSTA_LOGOS" description="VMSHIPMENT_POSTA_LOGOS_DESC"
+          directory="/images/virtuemart/shipment" default="default"
+          hide_default="1" hide_none="1" stripext="0" exclude="^_" />
+         <field name="pickup_posta_filter" type="sql"
+          default="" required="true" multiple="true" 
+          key_field="pp_group" value_field="pp_group"
+          query="SELECT DISTINCT pp_group FROM #__virtuemart_posta ORDER BY pp_group"
+          label="VMSHIPMENT_PICKUP_POSTA_FILTER"
+         />
+      </fieldset>
+      <fieldset name="restrictions">
+        <field name="countries" type="vmcountries" multiple="true" scope="com_virtuemart" default=""
+          label="VMSHIPMENT_PICKUP_POSTA_COUNTRIES" description="VMSHIPMENT_PICKUP_POSTA_COUNTRIES_DESC"/>
+        <field name="weight_start" type="text" size="10" default=""
+          label="VMSHIPMENT_PICKUP_POSTA_WEIGHT_START"
+          description="VMSHIPMENT_PICKUP_POSTA_WEIGHT_START_DESC"/>
+        <field name="weight_stop" type="text" size="10" default=""
+          label="VMSHIPMENT_PICKUP_POSTA_WEIGHT_STOP"
+          description="VMSHIPMENT_PICKUP_POSTA_WEIGHT_STOP_DESC"/>
+        <field name="weight_unit" type="vmweightunit" size="10" default=""
+          label="VMSHIPMENT_PICKUP_POSTA_WEIGHT_UNIT"
+          description="VMSHIPMENT_PICKUP_POSTA_WEIGHT_UNIT_DESC"/>
+      </fieldset>
+        <fieldset name="fee">
+          <field name="shipment_cost" type="text" label="VMSHIPMENT_PICKUP_POSTA_COST"
+                 description="VMSHIPMENT_PICKUP_POSTA_COST_DESC" default="0"/>
+          <field name="package_fee" type="text" label="VMSHIPMENT_PICKUP_POSTA_PACKAGE_FEE"
+                 description="VMSHIPMENT_PICKUP_POSTA_PACKAGE_FEE_DESC"/>
+          <field name="tax_id" type="vmtaxes" scope="com_virtuemart" label="VMSHIPMENT_PICKUP_POSTA_COUNTRIES_TAX"
+                 description="VMSHIPMENT_PICKUP_POSTA_COUNTRIES_TAX_DESC" default="0"/>
+          <field name="free_shipment" type="text" label="VMSHIPMENT_PICKUP_POSTA_COUNTRIES_FREE_SHIPPING_AMOUNT"
+                 description="VMSHIPMENT_PICKUP_POSTA_COUNTRIES_FREE_SHIPPING_AMOUNT_DESC" default=""/>
+        </fieldset>
+    </fields>
+  </vmconfig>
+</extension>
